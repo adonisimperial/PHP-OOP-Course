@@ -8,30 +8,32 @@
 </head>
 <body style="margin: 50px;">
     <?php
-        echo $_SERVER['SERVER_NAME'];
+        echo $_SERVER["DOCUMENT_ROOT"];
         echo "<br>";
-        echo $_SERVER['DOCUMENT_ROOT'];
+        echo $_SERVER["PHP_SELF"];
         echo "<br>";
-        echo $_SERVER['PHP_SELF'];
+        echo $_SERVER["REQUEST_METHOD"];
         echo "<br>";
-        echo $_SERVER['REQUEST_METHOD'];
-        echo "<br>";
-        echo $_SERVER['REQUEST_URI'];
+        echo $_SERVER["REQUEST_URI"];
         echo "<br>";
         echo "<br>";
 
-        // ?name=me&age=3; this query string is needed for the code below to get the name and age.
-        echo $_GET['name'];
+        // ?name=me&age=3
+        echo $_GET["name"];
         echo "<br>";  
-        echo $_GET['age'];
+        echo $_GET["age"];
         echo "<br>";
 
-        echo $_REQUEST['name'];
+        /*echo $_REQUEST["name"];
         echo "<br>";
-        echo $_REQUEST['age'];
+        echo $_REQUEST["age"];
+        
+        echo $_COOKIE["name"];
+
+        $_SESSION["username"] = "vangie";
+        echo $_SESSION["username"];
+        */
     ?>
-
-    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- OR 
