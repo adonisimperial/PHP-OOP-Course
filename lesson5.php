@@ -36,7 +36,51 @@
         echo "<br>";
         echo $_REQUEST["age"];
         */
+
+        // Form Handling
+        // 3. Request Verification - verify if it is a POST request.
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // 1. Getting the values
+            echo $_POST["username"];
+
+            // 2. Sanitation
+            echo htmlspecialchars(trim($_POST["username"]));
+            // Can use functions for sanitition using filter_input
+            //echo filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            // 4. Server-side Data Validation - try XSS attack by removing the required in the username.
+            if (empty($_POST["username"])) {
+                echo "Username is required.";
+            }
+
+            // 5. Error Handling
+            $errors = [];
+
+            if (empty($_POST['username'])) {
+                $errors[] = "Username is required.";
+            } else {
+                $user = trim($_POST['username']);
+            }
+
+            // Redirecting
+            /*if (!empty($errors)) {
+                header("Location: /");
+                exit(); // Terminate script to prevent code bleed
+            }*/
+        }
     ?>
+    
+    <?php foreach ($errors as $error): ?>
+        <li><?= $error ?></li>
+    <?php endforeach ?>
+
+    <form action="" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" required>    <!-- XSS - required can be removed via inspect. -->
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        <button type="submit" name="submit">Submit</button>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- OR 
