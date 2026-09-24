@@ -8,139 +8,81 @@
 </head>
 <body style="margin: 50px;">
     <?php
-        $foods = [
-            [
-                "name" => "turon",
-                "price" => 10,
-                //"qty" => 2
-            ], 
-            [
-                "name" => "banana que",
-                "price" => 10,
-                //"qty" => 1
-            ], 
-            [
-                "name" => "siomai",
-                "price" => 20,
-                //"qty" => 3
-            ]
-        ];
+        echo $_SERVER['SERVER_NAME'];
+        echo "<br>";
+        echo $_SERVER['DOCUMENT_ROOT'];
+        echo "<br>";
+        echo $_SERVER['PHP_SELF'];
+        echo "<br>";
+        echo $_SERVER['REQUEST_METHOD'];
+        echo "<br>";
+        echo $_SERVER['REQUEST_URI'];
+        echo "<br>";
+        echo "<br>";
 
-        $drinks = [
-            [
-                "name" => "coke",
-                "price" => 15,
-                //"qty" => 1
-            ], 
-            [
-                "name" => "orange juice",
-                "price" => 10,
-                //"qty" => 3
-            ], 
-            [
-                "name" => "buko juice",
-                "price" => 20,
-                //"qty" => 2
-            ]
-        ];
+        // ?name=Adonis%20Imperial&age=41; this query string is needed for the code below to get the name and age.
+        /* Checking
+        echo "<pre>";
+        var_dump($_SERVER, $_GET, $_POST);
+        echo "</pre>";
+        */
+        /* Getting the query values
+        echo $_GET["name"];
+        echo "<br>";  
+        echo $_GET["age"];
+        echo "<br>";
 
-        //$selected_food = "siomai";
-        //$selected_drink = "coke";
+        echo $_REQUEST["name"];
+        echo "<br>";
+        echo $_REQUEST["age"];
+        */
 
-        function calculate($price, $qty) {
-            $product = $price * $qty;
-            return $product;
-        }
-
+        // Form Handling
+        // 3. Request Verification - verify if it is a POST request.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $selected_food = $_POST["food"];
-            $food_qty = $_POST["food_qty"];
+            // 1. Getting the values
+            echo $_POST["username"];
 
-            $selected_drink = $_POST["drink"];
-            $drink_qty = $_POST["drink_qty"];
+            // 2. Sanitation
+            echo htmlspecialchars(trim($_POST["username"]));
+            // Can use functions for sanitition using filter_input
+            //echo filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            // 4. Server-side Data Validation - try XSS attack by removing the required in the username.
+            if (empty($_POST["username"])) {
+                echo "Username is required.";
+            }
+
+            // 5. Error Handling
+            $errors = [];
+
+            if (empty($_POST['username'])) {
+                $errors[] = "Username is required.";
+            } else {
+                $user = trim($_POST['username']);
+            }
+
+            // Redirecting
+            /*if (!empty($errors)) {
+                header("Location: /");
+                exit(); // Terminate script to prevent code bleed
+            }*/
         }
     ?>
-
-    <h1>Order Management System</h1>
-    <h2>Menu</h2>
-
-    <h3>Foods</h3>
-    <ol>
-        <?php foreach($foods as $food) : ?>
-            <li><?= $food["name"] . " " . $food["price"] ?></li>
+    
+    <?php if (isset($_POST["submit"]) && empty($errors)) : ?>
+        <?php foreach ($errors as $error): ?>
+            <li><?= $error ?></li>
         <?php endforeach ?>
-    </ol>
-
-    <h3>Drinks</h3>
-    <ol>
-        <?php foreach($drinks as $drink) : ?>
-            <li><?= $drink["name"] . " " . $drink["price"]?></li>
-        <?php endforeach ?>
-    </ol>
-
-    <h3>Order</h3>
+    <?php endif ?>
 
     <form action="" method="POST">
-        <label for="food">Food:</label>
-        <!--<input type="text" name="food">-->
-        <select name="food" required>
-            <option value="">Select food</option>
-            <option value="turon">turon</option>
-            <option value="banana que">banana que</option>
-            <option value="siomai">siomai</option>
-        </select>
-
-        <label for="food_qty">Quantity:</label>
-        <input type="number" name="food_qty" required>
-
-        <label for="drink">Drinks:</label>
-        <!--<input type="text" name="drink">-->
-        <select name="drink" required>
-            <option value="">Select drink</option>
-            <option value="coke">coke</option>
-            <option value="orange juice">orange juice</option>
-            <option value="buko juice">buko juice</option>
-        </select>
-
-        <label for="drink_qty">Quantity:</label>
-        <input type="number" name="drink_qty" required>
-
+        <label for="username">Username</label>
+        <input type="text" name="username" required>    <!-- XSS - required can be removed via inspect. -->
+        <label for="password">Password</label>
+        <input type="password" name="password">
         <button type="submit" name="submit">Submit</button>
     </form>
-    <br>
-
-    <?php if (isset($_POST["submit"])) : ?>
-        <h3>Order Summary</h3>
-        <?php foreach($foods as $food) : ?>
-            <?php if($selected_food == $food["name"]) : ?>
-                <?php $food_total = calculate($food["price"], $food_qty) ?>
-                <?= $food["name"] . " " . $food["price"] . " x " . $food_qty . " = " . $food_total ?>
-            <?php endif ?>
-        <?php endforeach ?>
-
-        <br>
-
-        <?php foreach($drinks as $drink) : ?>
-            <?php if($selected_drink == $drink["name"]) : ?>
-                <?php $drink_total = calculate($drink["price"], $drink_qty) ?>
-                <?= $drink["name"] . " " . $drink["price"] . " x " . $drink_qty . " = " . $drink_total ?>
-            <?php endif ?>
-        <?php endforeach ?>
-
-        <br>
-
-        Grand Total <?= $food_total + $drink_total ?>
-    <?php endif ?>
-    
-    <!--
-    Using the previous code/lesson, convert the selected food and drinks to HTML inputs inlcuding the quantity from the array.
-    1. Create a HTML form to accept food, food_qty, drink and drink_qty. This will replace the selected food and drinks including the quantity array.
-    2. Submit the data with action="" by now, not using php processor separately.
-    3. Convert the $selected_food and $selected_drink value to the HTML form input values of the selected orders.
-    4. Create a new variable name $food_qty and $drink_qty to contain the values from the HTML input values of the quantities.
-    5. Replace the values that using the quantity from the array ($food["qty"] and $drink["qty"]) with $food_qty and $drink_qty.
-    6. Finally, enclose those undefined variables in a condition at runtime so they do not throw errors. For the sample above, i used different condition for demonstration.
-    -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- OR 

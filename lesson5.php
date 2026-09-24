@@ -70,9 +70,11 @@
         }
     ?>
     
-    <?php foreach ($errors as $error): ?>
-        <li><?= $error ?></li>
-    <?php endforeach ?>
+    <?php if (isset($_POST["submit"]) && empty($errors)) : ?>
+        <?php foreach ($errors as $error): ?>
+            <li><?= $error ?></li>
+        <?php endforeach ?>
+    <?php endif ?>
 
     <form action="" method="POST">
         <label for="username">Username</label>
