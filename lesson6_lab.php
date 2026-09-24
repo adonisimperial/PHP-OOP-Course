@@ -12,17 +12,14 @@
             [
                 "name" => "turon",
                 "price" => 10,
-                //"qty" => 2
             ], 
             [
                 "name" => "banana que",
                 "price" => 10,
-                //"qty" => 1
             ], 
             [
                 "name" => "siomai",
                 "price" => 20,
-                //"qty" => 3
             ]
         ];
 
@@ -30,22 +27,23 @@
             [
                 "name" => "coke",
                 "price" => 15,
-                //"qty" => 1
             ], 
             [
                 "name" => "orange juice",
                 "price" => 10,
-                //"qty" => 3
             ], 
             [
                 "name" => "buko juice",
                 "price" => 20,
-                //"qty" => 2
             ]
         ];
 
-        //$selected_food = "siomai";
-        //$selected_drink = "coke";
+        /*
+        function calculate($price, $qty) {
+            $product = $price * $qty;
+            return $product;
+        }
+        */
 
         class Calculator {
             public $price;
@@ -87,7 +85,6 @@
 
     <form action="" method="POST">
         <label for="food">Food:</label>
-        <!--<input type="text" name="food">-->
         <select name="food" required>
             <option value="">Select food</option>
             <option value="turon">turon</option>
@@ -99,7 +96,6 @@
         <input type="number" name="food_qty" required>
 
         <label for="drink">Drinks:</label>
-        <!--<input type="text" name="drink">-->
         <select name="drink" required>
             <option value="">Select drink</option>
             <option value="coke">coke</option>
@@ -118,6 +114,7 @@
         <h3>Order Summary</h3>
         <?php foreach($foods as $food) : ?>
             <?php if($selected_food == $food["name"]) : ?>
+                <?php //$food_total = calculate($food["price"], $food_qty) ?>
                 <?php 
                     $food_product = new Calculator();
                     $food_product->price = $food["price"];
@@ -132,6 +129,7 @@
 
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
+                <?php //$drink_total = calculate($drink["price"], $drink_qty) ?>
                 <?php 
                     $drink_product = new Calculator();
                     $drink_product->price = $drink["price"];
