@@ -55,6 +55,7 @@
             }
         }
 
+        // newly added code to get the values from the HTML form inputs
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $selected_food = $_POST["food"];
             $food_qty = $_POST["food_qty"];
