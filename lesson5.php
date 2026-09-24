@@ -41,14 +41,15 @@
         // 3. Request Verification - verify if it is a POST request.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 1. Getting the values
-            echo $_POST["username"];
+            echo $_POST["username"];    // not safe for inputs like <script>alert("hi")</script>
 
             // 2. Sanitation
-            echo htmlspecialchars(trim($_POST["username"]));
+            echo htmlspecialchars(trim($_POST["username"]));    // safe for inputs like <script>alert("hi")</script>
             // Can use functions for sanitition using filter_input
             //echo filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
 
-            // 4. Server-side Data Validation - try XSS attack by removing the required in the username.
+            // Try XSS attack by removing the required in the username through inspect then introduce server-side validation.
+            // 4. Server-side Data Validation
             if (empty($_POST["username"])) {
                 echo "Username is required.";
             }
