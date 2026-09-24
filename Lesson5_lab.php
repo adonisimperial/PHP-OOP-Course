@@ -83,7 +83,7 @@
     <form action="" method="POST">
         <label for="food">Food:</label>
         <!--<input type="text" name="food">-->
-        <select name="food">
+        <select name="food" required>
             <option value="">Select food</option>
             <option value="turon">turon</option>
             <option value="banana que">banana que</option>
@@ -91,19 +91,19 @@
         </select>
 
         <label for="food_qty">Quantity:</label>
-        <input type="text" name="food_qty">
+        <input type="number" name="food_qty" required>
 
         <label for="drink">Drinks:</label>
         <!--<input type="text" name="drink">-->
-        <select name="drink">
+        <select name="drink" required>
             <option value="">Select drink</option>
-            <option value="turon">coke</option>
+            <option value="coke">coke</option>
             <option value="orange juice">orange juice</option>
             <option value="buko juice">buko juice</option>
         </select>
 
         <label for="drink_qty">Quantity:</label>
-        <input type="text" name="drink_qty">
+        <input type="number" name="drink_qty" required>
 
         <button type="submit" name="submit">Submit</button>
     </form>
