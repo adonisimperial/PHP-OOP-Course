@@ -52,6 +52,7 @@
             return $product;
         }
 
+        //newly added code to get the values from the HTML form inputs
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $selected_food = $_POST["food"];
             $food_qty = $_POST["food_qty"];
@@ -80,9 +81,9 @@
 
     <h3>Order</h3>
 
+    <!-- newly added code converting the selected food and drinks to HTML inputs including the quantity from the array -->
     <form action="" method="POST">
         <label for="food">Food:</label>
-        <!--<input type="text" name="food">-->
         <select name="food" required>
             <option value="">Select food</option>
             <option value="turon">turon</option>
@@ -94,7 +95,6 @@
         <input type="number" name="food_qty" required>
 
         <label for="drink">Drinks:</label>
-        <!--<input type="text" name="drink">-->
         <select name="drink" required>
             <option value="">Select drink</option>
             <option value="coke">coke</option>
@@ -113,6 +113,7 @@
         <h3>Order Summary</h3>
         <?php foreach($foods as $food) : ?>
             <?php if($selected_food == $food["name"]) : ?>
+                <?php //$food_total = calculate($food["price"], $food["qty"]) ?>
                 <?php $food_total = calculate($food["price"], $food_qty) ?>
                 <?= $food["name"] . " " . $food["price"] . " x " . $food_qty . " = " . $food_total ?>
             <?php endif ?>
@@ -122,6 +123,7 @@
 
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
+                <?php //$drink_total = calculate($drink["price"], $drink["qty"]) ?>
                 <?php $drink_total = calculate($drink["price"], $drink_qty) ?>
                 <?= $drink["name"] . " " . $drink["price"] . " x " . $drink_qty . " = " . $drink_total ?>
             <?php endif ?>

@@ -115,7 +115,8 @@
         <?php foreach($foods as $food) : ?>
             <?php if($selected_food == $food["name"]) : ?>
                 <?php //$food_total = calculate($food["price"], $food_qty) ?>
-                <?php 
+                <?php
+                    // newly added code to replace the commented $food_total variable above to a newly created object of the Calculator class
                     $food_product = new Calculator();
                     $food_product->price = $food["price"];
                     $food_product->qty = $food_qty;
@@ -130,7 +131,8 @@
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
                 <?php //$drink_total = calculate($drink["price"], $drink_qty) ?>
-                <?php 
+                <?php
+                    // newly added code to replace the commented $drink_total variable above to a newly created object of the Calculator class
                     $drink_product = new Calculator();
                     $drink_product->price = $drink["price"];
                     $drink_product->qty = $drink_qty;
