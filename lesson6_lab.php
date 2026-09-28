@@ -114,8 +114,8 @@
         <h3>Order Summary</h3>
         <?php foreach($foods as $food) : ?>
             <?php if($selected_food == $food["name"]) : ?>
-                <?php //$food_total = calculate($food["price"], $food_qty) ?>
                 <?php 
+                    //$food_total = calculate($food["price"], $food_qty)
                     $food_product = new Calculator();
                     $food_product->price = $food["price"];
                     $food_product->qty = $food_qty;
@@ -129,8 +129,8 @@
 
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
-                <?php //$drink_total = calculate($drink["price"], $drink_qty) ?>
-                <?php 
+                <?php
+                    //$drink_total = calculate($drink["price"], $drink_qty)
                     $drink_product = new Calculator();
                     $drink_product->price = $drink["price"];
                     $drink_product->qty = $drink_qty;
