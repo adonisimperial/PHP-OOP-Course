@@ -138,7 +138,7 @@
                     $food_product->setQty($food_qty);
                     $food_total = $food_product->calculate();
                 ?>
-                <?= $food["name"] . " " . $food["price"] . " x " . $food_qty . " = " . $food_total ?>
+                <?= $food["name"] . " " . $food_product->getPrice() . " x " . $food_product->getQty() . " = " . $food_total  //$food["name"] . " " . $food["price"] . " x " . $food_qty . " = " . $food_total ?>
             <?php endif ?>
         <?php endforeach ?>
 
@@ -154,7 +154,7 @@
                     $drink_product->setQty($drink_qty);
                     $drink_total = $drink_product->calculate(); 
                 ?>
-                <?= $drink["name"] . " " . $drink["price"] . " x " . $drink_qty . " = " . $drink_total ?>
+                <?= $drink["name"] . " " . $drink_product->getPrice() . " x " . $drink_product->getQty() . " = " . $drink_total //$drink["name"] . " " . $drink["price"] . " x " . $drink_qty . " = " . $drink_total ?>
             <?php endif ?>
         <?php endforeach ?>
 
