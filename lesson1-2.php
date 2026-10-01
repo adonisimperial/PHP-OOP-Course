@@ -10,7 +10,7 @@
     <!--
     LESSON 1: INSTALLATIONS
     Day 1 - Installation of LDE (Laragon) including its IDE (VS Code)
-    Day 2 - Installation of Bootstrap and HTML File
+    Day 2 - Bootstrap and HTML File Setup
     -->
     <div class="card">
         <div class="card-body">
@@ -21,7 +21,7 @@
     <!--
     LESSON 2: PHP BASICS
     Day 1: Demonstration of Variables, Data Types and Operators
-    Day 2: Age Calculator
+    Day 2: Age Calculator Laboratory Activity
     -->
     <h1>
         <?php $greeting = "<h2 style='color: red'>Hi Everyone!</h2>" ?>
