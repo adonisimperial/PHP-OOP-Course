@@ -7,12 +7,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="margin: 50px;">
+    <!--
+    LESSON 1: INSTALLATIONS
+    Day 1 - Installation of LDE (Laragon) including its IDE (VS Code)
+    Day 2 - Installation of Bootstrap and HTML File
+    -->
     <div class="card">
         <div class="card-body">
             This is a Bootstrap card and it is working.
         </div>
     </div>
 
+    <!--
+    LESSON 2: PHP BASICS
+    Day 1: Demonstration of Variables, Data Types and Operators
+    Day 2: Age Calculator
+    -->
     <h1>
         <?php $greeting = "<h2 style='color: red'>Hi Everyone!</h2>" ?>
         <?php echo htmlspecialchars($greeting) ?>
