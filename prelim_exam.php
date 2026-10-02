@@ -40,7 +40,7 @@
             return $total;
         }
 
-        // BONUS
+        // BONUS: Order Summary
         $total_quantity = 0;
         $grand_total = 0;
 
@@ -73,7 +73,7 @@
     </ul>
     <hr>
 
-    <!-- BONUS -->
+    <!-- BONUS: Order Summary -->
     <h3>Order Summary:</h3>
 
     Total Items: <?= $total_quantity ?> <br>

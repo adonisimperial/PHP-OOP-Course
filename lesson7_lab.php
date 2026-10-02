@@ -171,6 +171,9 @@
     3. Create explicit, individual getter and setter methods for each private property (price and qty).
     4. Adjust/update the internal logic of your methods or even properties as necessary depending on the approach you applied (no such adjustment for the technique used except the property and the getter/setter).
     5. Adjust/update also the instantiation, parameter passing (argument) or object calling affected by the changes/conversion depending in the approach or technique you used.
+
+    Note:
+    In converting the simple class to encapsulation, students must use encapsulation technique based on their report.
     -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
