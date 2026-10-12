@@ -184,7 +184,7 @@
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
                 <?php
-                    //$drink_product = new Calculator();
+                    //$drink_product = new Calculator(); // commented SAME WITH LESSON 8
                     if (isset($_POST["discounted"])) {
                         $drink_product = new DiscountCalculator();
                     } else {

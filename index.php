@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body style="margin: 50px;">
-    <!-- ADDITION OF DISCOUNT FEATURES AND POLYMORPHISM -->
+    <!-- ADDITION OF DISCOUNT FEATURES AND ABSTRACTION -->
     <?php
         $foods = [
             [
@@ -134,7 +134,7 @@
         <label for="drink_qty">Quantity:</label>
         <input type="number" name="drink_qty" required>
 
-        <!-- Added checkbox for discount feature - SAME WITH LESSON 8 -->
+        <!-- Added checkbox for discount feature - SAME WITH LESSON 8 AND 9 -->
         <label>
             <input type="checkbox" name="discounted" value="yes">
             20% discount
@@ -149,7 +149,7 @@
         <?php foreach($foods as $food) : ?>
             <?php if($selected_food == $food["name"]) : ?>
                 <?php
-                    //$food_product = new Calculator(); // commented SAME WITH LESSON 8
+                    //$food_product = new Calculator(); // commented SAME WITH LESSON 8 and 9
                     if (isset($_POST["discounted"])) {
                         $food_product = new DiscountCalculator();
                     } else {
@@ -169,7 +169,7 @@
         <?php foreach($drinks as $drink) : ?>
             <?php if($selected_drink == $drink["name"]) : ?>
                 <?php
-                    //$drink_product = new Calculator();
+                    //$drink_product = new Calculator();     // commented SAME WITH LESSON 8 and 9
                     if (isset($_POST["discounted"])) {
                         $drink_product = new DiscountCalculator();
                     } else {
