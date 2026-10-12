@@ -9,8 +9,8 @@
 <body style="margin: 50px;">
     <!-- 
     LESSON 3: ARRAYS AND CONTROL STRUCTURE
-    Day 1: Demonstration
-    Day 2: Order Menu
+    Day 1: Demonstration (lecture)
+    Day 2: Order Menu (laboratory activity)
     -->
     <?php
         $employees = [
