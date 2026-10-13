@@ -195,7 +195,8 @@
     2. Convert the Calculator class into an abstract class.
     3. Keep the shared properties, getters, and setters in the abstract class.
     4. Declare calculate() as an abstract method.
-    5. Create a RegularCalculator class and a DiscountCalculator class that extend the abstract Calculator class. Implement calculate() in each class for regular and discounted calculations, respectively.
+    5. Create a RegularCalculator class and a DiscountCalculator class that extend the abstract Calculator class. 
+    Implement calculate() in each class for regular and discounted calculations, respectively.
     6. If the checkbox is checked, create a DiscountCalculator object. If unchecked, create a RegularCalculator object.
 
     Note:
