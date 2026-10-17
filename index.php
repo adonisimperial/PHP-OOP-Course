@@ -96,15 +96,15 @@
                 <img src="<?= $product["photo"] ?>" class="card-img-top " alt="..." style="height: 200px; object-fit: cover;">  <!-- addt this to the bootstrap form style="height: 200px; object-fit: cover;" to reshape the photo -->
                 <div class="card-body">
                     <h4 class="card-title"><?= $product["name"] ?></h4>
-                    <p class="card-text"><?= $product["price"] ?></p>
+                    <p class="card-text">₱<?= number_format($product["price"], 2) ?></p>
                     
                     <!-- Copy a modal or dialog from Bootstrap but look for a dialog without Javascript -->
                     <button type="button" class="btn-solid theme-primary" commandfor="invokerDialog<?= $key ?>" command="show-modal">
-                        Open dialog
+                        Select Order
                     </button>
                     <dialog class="dialog" id="invokerDialog<?= $key ?>">
                         <div class="dialog-header">
-                            <h1 class="dialog-title">Invoker Commands</h1>
+                            <h1 class="dialog-title">Checkout Form</h1>
                             <button type="button" class="btn-close" commandfor="invokerDialog<?= $key ?>" command="close" aria-label="Close"></button>
                         </div>                        
                             
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="col-8">
                                         <h2><?= $product["name"] ?></h2>
-                                        <h4><?= $product["price"] ?></h4>
+                                        <h4>₱<?= number_format($product["price"], 2) ?></h4>
                                         <div>
                                             <!-- Add a hidden input box here to store reference data like the product name and price. For bigger project use identifiers like id or product_id. -->
                                             <input type="text" name="product_name" value="<?= $product["name"] ?>" hidden> <!-- you can also make it hidden by putting the hidden inside type. -->
@@ -143,7 +143,7 @@
     <?php if ($quantity > 0) : ?>
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title">Checkout</h2>
+                <h2 class="card-title">Checkout Summary</h2>
                 <p class="card-subtitle fg-3">Here's your payment</p>
                 <p class="card-text">Product: <?= $product_name ?></p>
                 <p class="card-text">Price: <?= $calculator->getPrice() ?></p>
