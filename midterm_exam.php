@@ -9,8 +9,8 @@
 <body style="margin: 50px;">
     <?php
         abstract class Calculator {
-            protected $price;
-            protected $quantity;
+            private $price;
+            private $quantity;
 
             function getPrice() {
                 return $this->price;

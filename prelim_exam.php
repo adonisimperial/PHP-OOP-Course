@@ -43,10 +43,6 @@
         // BONUS: Order Summary
         $total_quantity = 0;
         $grand_total = 0;
-
-        foreach($arrays as $array) {
-            // Your code here
-        }
     ?>
 
     <h1>Automated E-Commerce Invoice Engine</h1>
