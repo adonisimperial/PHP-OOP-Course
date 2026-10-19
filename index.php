@@ -31,12 +31,12 @@
             ]
         ];
 
-        class calculator {
+        class Calculator {
             private $price;
             private $quantity;
 
             function getPrice() {
-                $this->price;
+                return $this->price;
             }
 
             function setPrice($price) {
@@ -44,7 +44,7 @@
             }
 
             function getQuantity() {
-                $this->quantity;
+                return$this->quantity;
             }
 
             function setQuantity($quantity) {
@@ -156,6 +156,15 @@
             </div>
         </div>
     <?php endif ?>
+
+    <!--
+    This file was called lesson11a_bs.php but no 11b because the 11b will be the SoC (Modular PHP), wherein, the project will become a multi-file structure. Which will also be converted to basic MVC later or never.
+    -->
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <!--
+    Note: Just convert to Bootstrap 6 because of the new update. This is too different from the Bootstrap 5 so far.
+    -->
 
     <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
 </body>
