@@ -18,7 +18,7 @@
         $item = $_GET["search"];
         $stmt2 = $db->prepare("SELECT * from products WHERE name LIKE '%" . $item . "%'");
         $stmt2->execute();
-        // SQL Injection: Input Box Method
+        // SQL Injection: Input Box Method (POST-based SQL Injection)
         // In the search field, input/type this -> Laptop'; DROP TABLE users; -> and click the search/submit button
         //var_dump($stmt2);
         $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
