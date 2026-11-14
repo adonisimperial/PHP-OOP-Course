@@ -15,6 +15,14 @@
 ?>
 
     <h1>Product CRUD</h1>
+
+    <form action="" method="post">
+        <label for="search" class="form-label mb-2">Search</label>
+        <input type="text" class="form-control" id="search" placeholder="Search product">
+        
+        <button type="submit" name="btnSearch">Search</button>
+    </form>
+    
     <table class="table">
         <thead>
             <tr>
