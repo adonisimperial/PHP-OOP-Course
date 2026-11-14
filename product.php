@@ -5,12 +5,19 @@
 
     $database = new Database();
     $db = $database->getConnection();
-
-    $stmt = new Product($db);
-    $products = $stmt->read()->fetchAll(PDO::FETCH_ASSOC);
+    
+    if (isset($_POST["btnSearch"])) {
+        $item = $_POST["search"];
+        $stmt2 = $db->prepare("SELECT * from products WHERE name LIKE '%" . $item . "%'");
+        $stmt2->execute();
+        $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $stmt = new Product($db);
+        $products = $stmt->read()->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     //echo "<pre>";
-    //var_dump($product);
+    //var_dump($products);
     //echo "</pre>";
 ?>
 
@@ -18,9 +25,9 @@
 
     <form action="" method="post">
         <label for="search" class="form-label mb-2">Search</label>
-        <input type="text" class="form-control" id="search" placeholder="Search product">
+        <input type="text" class="form-control" id="search" name="search" placeholder="Search product">
         
-        <button type="submit" name="btnSearch">Search</button>
+        <button type="submit" name="btnSearch" class="btn">Search</button>
     </form>
     
     <table class="table">
