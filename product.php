@@ -5,11 +5,22 @@
 
     $database = new Database();
     $db = $database->getConnection();
+
+    // SQL Injection: URL Method
+    //$item = $_GET['search'];
+    //$stmt2 = $db->prepare("SELECT * from products WHERE name LIKE '%" . $item . "%'");
+    //$stmt2->execute();
+    //var_dump($stmt2);
+    //http://oopclass.test/product.php?search=Laptop'; DROP TABLE users;    // for a string value input, put a single quote (') before the semicolon (;) to terminate the string before implementing the SQL injection.
+    //http://oopclass.test/product.php?search=1; DROP TABLE users;    // for a numeric value input, just put a semicolon (;) after the number to terminate the statement then implement the SQL injection.
     
-    if (isset($_POST["btnSearch"])) {
-        $item = $_POST["search"];
+    if (isset($_GET["btnSearch"])) {
+        $item = $_GET["search"];
         $stmt2 = $db->prepare("SELECT * from products WHERE name LIKE '%" . $item . "%'");
         $stmt2->execute();
+        // SQL Injection: Input Box Method
+        // In the search field, input/type this -> Laptop'; DROP TABLE users; -> and click the search/submit button
+        //var_dump($stmt2);
         $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     } else {
         $stmt = new Product($db);
@@ -23,7 +34,7 @@
 
     <h1>Product CRUD</h1>
 
-    <form action="" method="post">
+    <form action="" method="get">
         <label for="search" class="form-label mb-2">Search</label>
         <input type="text" class="form-control" id="search" name="search" placeholder="Search product">
         
